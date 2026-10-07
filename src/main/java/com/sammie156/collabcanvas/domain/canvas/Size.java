@@ -1,10 +1,10 @@
 package com.sammie156.collabcanvas.domain.canvas;
 
 public class Size {
-    private double width;
-    private double height;
+    private int width;
+    private int height;
 
-    public Size(double width, double height) {
+    public Size(int width, int height) {
         if (width < 0 || height < 0) {
             throw new IllegalArgumentException(
                 "Width and Height cannot be negative"
@@ -15,11 +15,11 @@ public class Size {
         this.height = height;
     }
 
-    public double getWidth() {
+    public int getWidth() {
         return width;
     }
 
-    public double getHeight() {
+    public int getHeight() {
         return height;
     }
 }
