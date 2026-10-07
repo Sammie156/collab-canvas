@@ -28,7 +28,7 @@ public class LinkNodeTest {
 
         LinkNode node = new LinkNode(id, position, size, color, url);
 
-        assertEquals(id, node.getUuid());
+        assertEquals(id, node.getId());
         assertEquals(position, node.getPosition());
         assertEquals(size, node.getSize());
         assertEquals(color, node.getNodeColor());

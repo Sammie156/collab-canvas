@@ -27,7 +27,7 @@ public class TextNodeTest {
 
         TextNode node = new TextNode(id, position, size, color, "Hello World");
 
-        assertEquals(id, node.getUuid());
+        assertEquals(id, node.getId());
         assertEquals(position, node.getPosition());
         assertEquals(size, node.getSize());
         assertEquals(color, node.getNodeColor());

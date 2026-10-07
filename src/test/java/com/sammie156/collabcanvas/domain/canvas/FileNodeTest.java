@@ -31,7 +31,7 @@ public class FileNodeTest {
 
         FileNode node = new FileNode(uuid, position, size, color, file, subpath);
 
-        assertEquals(uuid, node.getUuid());
+        assertEquals(uuid, node.getId());
         assertEquals(position, node.getPosition());
         assertEquals(size, node.getSize());
         assertEquals(color, node.getNodeColor());

@@ -20,7 +20,7 @@ public abstract class Node {
         this.nodeColor = canvasColor;
     }
 
-    public UUID getUuid() {
+    public UUID getId() {
         return uuid;
     }
 

@@ -41,7 +41,7 @@ public class GroupNodeTest {
             backgroundStyle
         );
 
-        assertEquals(id, node.getUuid());
+        assertEquals(id, node.getId());
         assertEquals(position, node.getPosition());
         assertEquals(size, node.getSize());
         assertEquals(color, node.getNodeColor());
