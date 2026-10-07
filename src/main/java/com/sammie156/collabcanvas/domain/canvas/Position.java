@@ -1,5 +1,7 @@
 package com.sammie156.collabcanvas.domain.canvas;
 
+import java.util.Objects;
+
 public class Position {
     private int x;
     private int y;
@@ -15,5 +17,21 @@ public class Position {
 
     public int getY() {
         return y;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (!(o instanceof Position other)) {
+            return false;
+        }
+
+        return x == other.x && y == other.y;
+    }
+
+    @Override 
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }
