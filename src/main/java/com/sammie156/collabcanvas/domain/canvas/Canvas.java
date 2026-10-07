@@ -34,4 +34,47 @@ public class Canvas {
     public List<Edge> getEdges() {
         return List.copyOf(edges); // so that the list is unmodifiable
     }
+
+    public void addNode(Node node) {
+        boolean alreadyExists = nodes.stream().anyMatch(
+            existing -> existing.getUuid().equals(node.getUuid())
+        );
+
+        // We don't want any duplicate nodes
+        if (alreadyExists) {
+            throw new IllegalArgumentException(
+                "Node with id " + node.getUuid() + " already exists"
+            );
+        }
+
+        nodes.add(node);
+    }
+
+    public void addEdge(Edge edge) {
+        boolean fromExists = nodes.stream().anyMatch(
+            existing -> existing.getUuid().equals(edge.getFromNode())
+        );
+
+        boolean toExists = nodes.stream().anyMatch(
+            existing -> existing.getUuid().equals(edge.getToNode())
+        );
+
+        if (!fromExists || !toExists) {
+            throw new IllegalArgumentException(
+                "Edge must reference nodes that exist in the canvas"
+            );
+        }
+
+        boolean alreadyExists = edges.stream().anyMatch(
+            existing -> existing.getUuid().equals(edge.getUuid())
+        );
+
+        if (alreadyExists) {
+            throw new IllegalArgumentException(
+                "Edge with id " + edge.getUuid() + " already exists"
+            );
+        }
+
+        edges.add(edge);
+    }
 }
