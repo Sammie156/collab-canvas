@@ -52,16 +52,15 @@ public class EdgeTest {
     @Test
     void shouldStoreColorAndLabel() {
         Edge edge = new Edge(
-            UUID.randomUUID(),
-            UUID.randomUUID(),
-            null,
-            null,
-            UUID.randomUUID(),
-            null,
-            null,
-            new CanvasColor("3"),
-            "label"
-        );
+                UUID.randomUUID(),
+                UUID.randomUUID(),
+                null,
+                null,
+                UUID.randomUUID(),
+                null,
+                null,
+                new CanvasColor("3"),
+                "label");
 
         assertEquals(new CanvasColor("3"), edge.getEdgeColor());
         assertEquals("label", edge.getLabel());
