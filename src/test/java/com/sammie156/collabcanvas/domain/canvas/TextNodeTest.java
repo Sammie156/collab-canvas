@@ -30,7 +30,7 @@ public class TextNodeTest {
         assertEquals(id, node.getUuid());
         assertEquals(position, node.getPosition());
         assertEquals(size, node.getSize());
-        assertEquals(color, node.getCanvasColor());
+        assertEquals(color, node.getNodeColor());
         assertEquals("Hello World", node.getText());
     }
 
@@ -58,6 +58,6 @@ public class TextNodeTest {
 
         node.changeColor(new CanvasColor("2"));
         
-        assertEquals(new CanvasColor("2"), node.getCanvasColor());
+        assertEquals(new CanvasColor("2"), node.getNodeColor());
     }
 }

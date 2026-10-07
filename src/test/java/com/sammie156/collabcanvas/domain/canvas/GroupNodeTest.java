@@ -6,42 +6,53 @@ import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 
-public class FileNodeTest {
-    FileNode createFileNode() {
-        return new FileNode(
+public class GroupNodeTest {
+    GroupNode createGroupNode() {
+        return new GroupNode(
             UUID.randomUUID(),
-            new Position(100, 200),
+            new Position(300, 200),
             new Size(10, 15),
-            new CanvasColor("4"),
-            "..",
-            null
+            new CanvasColor("3"),
+            "label",
+            "background",
+            "backgroundStyle"
         );
     }
 
-    @Test
-    void shouldCreateFileNode() {
-        UUID uuid = UUID.randomUUID();
+    @Test 
+    void shouldCreateGroupNode() {
+        UUID id = UUID.randomUUID();
 
         Position position = new Position(100, 200);
         Size size = new Size(10, 15);
         CanvasColor color = new CanvasColor("3");
 
-        String file = "path/to/dummy";
-        String subpath = "..";
+        String label = "cool stuff";
+        String background = "image";
+        String backgroundStyle = "ratio";
 
-        FileNode node = new FileNode(uuid, position, size, color, file, subpath);
+        GroupNode node = new GroupNode(
+            id, 
+            position, 
+            size, 
+            color, 
+            label, 
+            background, 
+            backgroundStyle
+        );
 
-        assertEquals(uuid, node.getUuid());
+        assertEquals(id, node.getUuid());
         assertEquals(position, node.getPosition());
         assertEquals(size, node.getSize());
         assertEquals(color, node.getNodeColor());
-        assertEquals(file, node.getFile());
-        assertEquals(subpath, node.getSubpath());
+        assertEquals(label, node.getLabel());
+        assertEquals(background, node.getBackground());
+        assertEquals(backgroundStyle, node.getBackgroundStyle());
     }
 
     @Test 
     void shouldMoveNode() {
-        FileNode node = createFileNode();
+        GroupNode node = createGroupNode();
 
         node.moveTo(400, -200);
 
@@ -50,7 +61,7 @@ public class FileNodeTest {
 
     @Test
     void shouldResizeNode() {
-        FileNode node = createFileNode();
+        GroupNode node = createGroupNode();
 
         node.resizeTo(200, 10);
 
@@ -59,7 +70,7 @@ public class FileNodeTest {
 
     @Test
     void shouldRecolorNode() {
-        FileNode node = createFileNode();
+        GroupNode node = createGroupNode();
 
         node.changeColor(new CanvasColor("2"));
         

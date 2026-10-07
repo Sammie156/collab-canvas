@@ -9,15 +9,14 @@ import org.junit.jupiter.api.Test;
 public class LinkNodeTest {
     LinkNode createLinkNode() {
         return new LinkNode(
-            UUID.randomUUID(),
-            new Position(100, 200),
-            new Size(10, 15),
-            new CanvasColor("3"),
-            "google.com"
-        );
+                UUID.randomUUID(),
+                new Position(100, 200),
+                new Size(10, 15),
+                new CanvasColor("3"),
+                "google.com");
     }
 
-    @Test 
+    @Test
     void shouldCreateLinkNode() {
         UUID id = UUID.randomUUID();
 
@@ -32,11 +31,11 @@ public class LinkNodeTest {
         assertEquals(id, node.getUuid());
         assertEquals(position, node.getPosition());
         assertEquals(size, node.getSize());
-        assertEquals(color, node.getCanvasColor());
+        assertEquals(color, node.getNodeColor());
         assertEquals(url, node.getUrl());
     }
 
-    @Test 
+    @Test
     void shouldMoveNode() {
         LinkNode node = createLinkNode();
 
@@ -59,7 +58,7 @@ public class LinkNodeTest {
         LinkNode node = createLinkNode();
 
         node.changeColor(new CanvasColor("2"));
-        
-        assertEquals(new CanvasColor("2"), node.getCanvasColor());
+
+        assertEquals(new CanvasColor("2"), node.getNodeColor());
     }
 }

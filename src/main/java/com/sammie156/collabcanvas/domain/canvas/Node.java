@@ -6,7 +6,7 @@ public abstract class Node {
     private final UUID uuid;
     private Position position;
     private Size size;
-    private CanvasColor canvasColor;
+    private CanvasColor nodeColor;
 
     protected Node(
         UUID id,
@@ -17,7 +17,7 @@ public abstract class Node {
         this.uuid = id;
         this.position = position;
         this.size = size;
-        this.canvasColor = canvasColor;
+        this.nodeColor = canvasColor;
     }
 
     public UUID getUuid() {
@@ -32,8 +32,8 @@ public abstract class Node {
         return size;
     }
 
-    public CanvasColor getCanvasColor() {
-        return canvasColor;
+    public CanvasColor getNodeColor() {
+        return nodeColor;
     }
 
     public void moveTo(int x, int y) {
@@ -45,6 +45,6 @@ public abstract class Node {
     }
 
     public void changeColor(CanvasColor color) {
-        this.canvasColor = color;
+        this.nodeColor = color;
     }
 }
