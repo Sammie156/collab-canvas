@@ -3,7 +3,7 @@ package com.sammie156.collabcanvas.domain.canvas;
 import java.util.UUID;
 
 public abstract class Node {
-    private final UUID uuid;
+    private final UUID id;
     private Position position;
     private Size size;
     private CanvasColor nodeColor;
@@ -14,14 +14,14 @@ public abstract class Node {
         Size size,
         CanvasColor canvasColor
     ) {
-        this.uuid = id;
+        this.id = id;
         this.position = position;
         this.size = size;
         this.nodeColor = canvasColor;
     }
 
     public UUID getId() {
-        return uuid;
+        return id;
     }
 
     public Position getPosition() {

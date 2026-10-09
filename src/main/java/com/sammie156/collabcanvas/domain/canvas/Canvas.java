@@ -66,12 +66,12 @@ public class Canvas {
         }
 
         boolean alreadyExists = edges.stream().anyMatch(
-            existing -> existing.getUuid().equals(edge.getUuid())
+            existing -> existing.getId().equals(edge.getId())
         );
 
         if (alreadyExists) {
             throw new IllegalArgumentException(
-                "Edge with id " + edge.getUuid() + " already exists"
+                "Edge with id " + edge.getId() + " already exists"
             );
         }
 
@@ -97,12 +97,12 @@ public class Canvas {
 
     public void removeEdge(Edge edge) {
         boolean removed = edges.removeIf(
-            existing -> existing.getUuid().equals(edge.getUuid())
+            existing -> existing.getId().equals(edge.getId())
         );
 
         if (!removed) {
             throw new IllegalArgumentException(
-                "Edge with id " + edge.getUuid() + " does not exist"
+                "Edge with id " + edge.getId() + " does not exist"
             );
         }
     }

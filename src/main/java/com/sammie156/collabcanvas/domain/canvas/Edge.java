@@ -3,7 +3,7 @@ package com.sammie156.collabcanvas.domain.canvas;
 import java.util.UUID;
 
 public class Edge {
-    private final UUID uuid;
+    private final UUID id;
 
     private UUID fromNode;
     private EdgeSide fromSide;
@@ -18,7 +18,7 @@ public class Edge {
 
     public Edge(UUID uuid, UUID fromNode, EdgeSide fromSide, EdgeEnd fromEnd, UUID toNode, EdgeSide toSide,
             EdgeEnd toEnd, CanvasColor edgeColor, String label) {
-        this.uuid = uuid;
+        this.id = uuid;
         this.fromNode = fromNode;
         this.fromSide = fromSide;
         this.fromEnd = fromEnd;
@@ -29,8 +29,8 @@ public class Edge {
         this.label = label;
     }
 
-    public UUID getUuid() {
-        return uuid;
+    public UUID getId() {
+        return id;
     }
 
     public UUID getFromNode() {

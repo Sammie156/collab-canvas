@@ -25,7 +25,7 @@ public class EdgeTest {
                 new CanvasColor("3"),
                 "label");
 
-        assertEquals(edgeId, edge.getUuid());
+        assertEquals(edgeId, edge.getId());
         assertEquals(fromNode, edge.getFromNode());
         assertEquals(toNode, edge.getToNode());
     }

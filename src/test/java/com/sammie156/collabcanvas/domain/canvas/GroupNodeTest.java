@@ -3,7 +3,6 @@ package com.sammie156.collabcanvas.domain.canvas;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.UUID;
-
 import org.junit.jupiter.api.Test;
 
 public class GroupNodeTest {
