@@ -1,6 +1,7 @@
 package com.sammie156.collabcanvas.domain.operation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.UUID;
 
@@ -49,5 +50,34 @@ public class OperationTest {
         assertEquals(0L, operation.getServerRevision());
     }
 
-    
+    @Test
+    void shouldRejectInvalidOperationId() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> new Operation(
+                null, 
+                UUID.randomUUID(), 
+                UUID.randomUUID(), 
+                OperationType.REMOVE_EDGE, 
+                UUID.randomUUID(), 
+                null, 
+            1L)
+        );
+    }
+
+    @Test
+    void shouldRejectMissingTargetForMoveNode() {
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> new Operation(
+                UUID.randomUUID(),
+                UUID.randomUUID(),
+                UUID.randomUUID(),
+                OperationType.ADD_EDGE,
+                null,
+                null,
+                1L
+            )
+        );
+    }
 }

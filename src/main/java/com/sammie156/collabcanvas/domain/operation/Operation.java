@@ -19,6 +19,17 @@ public class Operation {
             UUID targetId,
             OperationPayload payload,
             long serverRevision) {
+
+        if (id == null) {
+            throw new IllegalArgumentException(
+                    "Operation ID cannot be null");
+        }
+
+        if (targetId == null) {
+            throw new IllegalArgumentException(
+                    "Target ID cannot be null");
+        }
+
         this.id = id;
         this.canvasId = canvasId;
         this.userId = userId;
