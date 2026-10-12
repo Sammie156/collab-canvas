@@ -2,6 +2,22 @@ package com.sammie156.collabcanvas.domain.canvas;
 
 import java.util.UUID;
 
+/**
+ * This class defines a Node as defined by the Canvas Spec.
+ * <br>
+ * Check the full specification here: https://jsoncanvas.org/spec/1.0/
+ * <br>
+ * 
+ * This acts as an abstract class so that different types of Nodes 
+ * can be implemented as per the specification. This class is 
+ * implemented as follows:
+ * <ul>
+ * <li> {@link TextNode}
+ * <li> {@link FileNode}
+ * <li> {@link LinkNode}
+ * <li> {@link GroupNode}
+ * </ul>
+ */
 public abstract class Node {
     private final UUID id;
     private Position position;
