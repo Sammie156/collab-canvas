@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.UUID;
+
 import com.sammie156.collabcanvas.domain.canvas.Canvas;
 import com.sammie156.collabcanvas.domain.canvas.Edge;
 import com.sammie156.collabcanvas.domain.canvas.CanvasColor;
@@ -140,12 +141,68 @@ public class CanvasOperationApplierTest {
 
     @Test
     void shouldRejectRemovingNonexistentEdge() {
+        Canvas canvas = new Canvas(UUID.randomUUID(), "test canvas");
 
+        Operation operation = new Operation(
+            UUID.randomUUID(),
+            canvas.getId(),
+            UUID.randomUUID(),
+            OperationType.REMOVE_EDGE,
+            UUID.randomUUID(),
+            null,
+            1L
+        );
+
+        CanvasOperationApplier applier = new CanvasOperationApplier();
+
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> applier.apply(canvas, operation)
+        );
     }
 
     @Test
     void shouldRejectAddingEdgeWithMissingEndpoint() {
+        Canvas canvas = new Canvas(UUID.randomUUID(), "test canvas");
+        
+        TextNode node1 = new TextNode(
+            UUID.randomUUID(),
+            new Position(100, 200),
+            new Size(10, 20),
+            new CanvasColor("3"),
+            "a node"
+        );
 
+        canvas.addNode(node1);
+
+        Edge edge = new Edge(
+            UUID.randomUUID(),
+            node1.getId(),
+            null,
+            null,
+            UUID.randomUUID(),
+            null,
+            null,
+            new CanvasColor("3"),
+            "edge"
+        );
+
+        CanvasOperationApplier applier = new CanvasOperationApplier();
+
+        Operation operation = new Operation(
+            UUID.randomUUID(),
+            canvas.getId(),
+            UUID.randomUUID(),
+            OperationType.ADD_EDGE,
+            null,
+            new AddEdgePayload(edge),
+            1L
+        );
+
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> applier.apply(canvas, operation)
+        );
     }
 
     @Test
@@ -356,7 +413,7 @@ public class CanvasOperationApplierTest {
             UUID.randomUUID(),
             canvas.getId(),
             UUID.randomUUID(),
-            OperationType.REMOVE_EDGE,
+            OperationType.UPDATE_NODE_CONTENT,
             null,
             null,
             1L
