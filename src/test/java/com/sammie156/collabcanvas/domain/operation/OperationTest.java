@@ -73,7 +73,7 @@ public class OperationTest {
                 UUID.randomUUID(),
                 UUID.randomUUID(),
                 UUID.randomUUID(),
-                OperationType.ADD_EDGE,
+                OperationType.MOVE_NODE,
                 null,
                 null,
                 1L
