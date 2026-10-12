@@ -12,10 +12,10 @@ import java.util.UUID;
  * can be implemented as per the specification. This class is 
  * implemented as follows:
  * <ul>
- * <li> TextNode
- * <li> FileNode
- * <li> GroupNode
- * <li> LinkNode
+ * <li> {@link TextNode}
+ * <li> {@link FileNode}
+ * <li> {@link LinkNode}
+ * <li> {@link GroupNode}
  * </ul>
  */
 public abstract class Node {
