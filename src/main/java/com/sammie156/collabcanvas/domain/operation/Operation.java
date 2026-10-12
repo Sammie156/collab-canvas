@@ -25,9 +25,10 @@ public class Operation {
                     "Operation ID cannot be null");
         }
 
-        if (targetId == null) {
+        if (targetId == null && type == OperationType.MOVE_NODE) {
             throw new IllegalArgumentException(
-                    "Target ID cannot be null");
+                "Target ID cannot be null for moving a node"
+            );
         }
 
         this.id = id;
