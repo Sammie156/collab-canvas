@@ -4,7 +4,11 @@ import java.util.UUID;
 
 import com.sammie156.collabcanvas.domain.canvas.Canvas;
 import com.sammie156.collabcanvas.domain.canvas.Edge;
+import com.sammie156.collabcanvas.domain.canvas.FileNode;
+import com.sammie156.collabcanvas.domain.canvas.GroupNode;
+import com.sammie156.collabcanvas.domain.canvas.LinkNode;
 import com.sammie156.collabcanvas.domain.canvas.Node;
+import com.sammie156.collabcanvas.domain.canvas.TextNode;
 
 public class CanvasOperationApplier {
     public void apply(Canvas canvas, Operation operation) {
@@ -26,6 +30,7 @@ public class CanvasOperationApplier {
             case CHANGE_NODE_COLOR -> changeNodeColor(canvas, operation);
             case ADD_EDGE -> addEdge(canvas, operation);
             case REMOVE_EDGE -> removeEdge(canvas, operation);
+            case UPDATE_NODE_CONTENT -> updateNodeContent(canvas, operation);
 
             default -> throw new UnsupportedOperationException(
                     "Operation type is not supported yet: " + operation.getType());
@@ -100,5 +105,35 @@ public class CanvasOperationApplier {
                         "Edge not found: " + targetId
                     )
                 );
+    }
+
+    private void updateNodeContent(Canvas canvas, Operation operation) {
+        Node node = findNode(canvas, operation.getTargetId());
+
+        UpdateNodeContentPayload payload = (UpdateNodeContentPayload) operation.getPayload();
+
+        UpdateNodeContentPayload.Content content = payload.getContent();
+
+        if (node instanceof TextNode textNode &&
+            content instanceof UpdateNodeContentPayload.TextContent text
+        ) {
+            textNode.updateText(text.text());
+        } else if (node instanceof FileNode fileNode &&
+            content instanceof UpdateNodeContentPayload.FileContent file
+        ) {
+            fileNode.updateFile(file.file(), file.subpath());
+        } else if (node instanceof LinkNode linkNode &&
+            content instanceof UpdateNodeContentPayload.LinkContent link
+        ) {
+            linkNode.updateLink(link.link());
+        } else if (node instanceof GroupNode groupNode &&
+            content instanceof UpdateNodeContentPayload.GroupContent group
+        ) {
+            groupNode.updateGroup(group.label(), group.background(), group.backgroundStyle());
+        } else {
+            throw new IllegalArgumentException(
+                "Content type does not match Node type: " + node.getClass().getSimpleName()
+            );
+        }
     }
 }

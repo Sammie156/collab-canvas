@@ -33,4 +33,10 @@ public class GroupNode extends Node {
     public String getBackgroundStyle() {
         return backgroundStyle;
     }
+
+    public void updateGroup(String label, String background, String backgroundStyle) {
+        this.label = label;
+        this.background = background;
+        this.backgroundStyle = backgroundStyle;
+    }
 }

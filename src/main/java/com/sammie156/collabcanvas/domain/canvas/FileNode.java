@@ -26,4 +26,9 @@ public class FileNode extends Node{
     public String getSubpath() {
         return subpath;
     }
+
+    public void updateFile(String file, String subpath) {
+        this.file = java.util.Objects.requireNonNull(file, "File cannot be null");
+        this.subpath = subpath;
+    }
 }

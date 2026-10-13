@@ -18,4 +18,8 @@ public class TextNode extends Node {
     public String getText() {
         return text;
     }
+
+    public void updateText(String text) {
+        this.text = java.util.Objects.requireNonNull(text, "Text must not be null");
+    }
 }

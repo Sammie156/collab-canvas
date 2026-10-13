@@ -5,6 +5,7 @@ public sealed interface OperationPayload
                 MoveNodePayload,
                 ResizeNodePayload,
                 ChangeNodeColorPayload,
-                AddEdgePayload{
+                AddEdgePayload,
+                UpdateNodeContentPayload{
     
 }

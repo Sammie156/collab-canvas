@@ -18,4 +18,8 @@ public class LinkNode extends Node {
     public String getUrl() {
         return url;
     }
+
+    public void updateLink(String url) {
+        this.url = java.util.Objects.requireNonNull(url, "Link cannot be null");
+    }
 }
