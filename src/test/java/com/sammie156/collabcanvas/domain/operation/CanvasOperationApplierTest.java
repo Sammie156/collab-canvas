@@ -532,4 +532,36 @@ public class CanvasOperationApplierTest {
             () -> applier.apply(canvas, operation)
         );
     }
+
+    // TODO: Add these tests below
+
+    @Test
+    void shouldUpdateTextNodeContent() {
+
+    }
+
+    @Test 
+    void shouldUpdateFileNodeContent() {
+
+    }
+
+    @Test
+    void shouldUpdateLinkNodeContent() {
+
+    }
+
+    @Test
+    void shouldUpdateGroupNodeContent() {
+
+    }
+
+    @Test
+    void shouldRejectContentTypeMismatch() {
+
+    }
+
+    @Test
+    void shouldRejectUpdatingContentOfNonexistentNode() {
+
+    }
 }
