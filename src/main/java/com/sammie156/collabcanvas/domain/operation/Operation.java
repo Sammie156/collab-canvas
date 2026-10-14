@@ -27,9 +27,10 @@ public class Operation {
 
         if (targetId == null && type == OperationType.MOVE_NODE) {
             throw new IllegalArgumentException(
-                "Target ID cannot be null for moving a node"
-            );
+                    "Target ID cannot be null for moving a node");
         }
+
+        validate(id, canvasId, userId, type, targetId, payload, serverRevision);
 
         this.id = id;
         this.canvasId = canvasId;
@@ -38,6 +39,56 @@ public class Operation {
         this.targetId = targetId;
         this.payload = payload;
         this.serverRevision = serverRevision;
+    }
+
+    private void validate(
+            UUID id,
+            UUID canvasId,
+            UUID userId,
+            OperationType type,
+            UUID targetId,
+            OperationPayload payload,
+            long serverRevision) {
+        if (id == null || canvasId == null || userId == null || type == null) {
+            throw new IllegalArgumentException(
+                    "Operation metadata must not be null");
+        }
+
+        if (serverRevision < 0) {
+            throw new IllegalArgumentException(
+                    "Server revision cannot be negative");
+        }
+
+        boolean valid = switch (type) {
+            case ADD_NODE ->
+                targetId == null && payload instanceof AddNodePayload;
+
+            case REMOVE_NODE, REMOVE_EDGE ->
+                targetId != null && payload == null;
+
+            case MOVE_NODE ->
+                targetId != null && payload instanceof MoveNodePayload;
+
+            case RESIZE_NODE ->
+                targetId != null && payload instanceof ResizeNodePayload;
+
+            case CHANGE_NODE_COLOR ->
+                targetId != null
+                        && payload instanceof ChangeNodeColorPayload;
+
+            case ADD_EDGE ->
+                targetId == null && payload instanceof AddEdgePayload;
+
+            case UPDATE_NODE_CONTENT ->
+                targetId != null
+                        && payload instanceof UpdateNodeContentPayload;
+            default -> throw new IllegalArgumentException("Unexpected value: " + type);
+        };
+
+        if (!valid) {
+            throw new IllegalArgumentException(
+                    "Invalid target ID or payload for operation type: " + type);
+        }
     }
 
     public UUID getId() {
