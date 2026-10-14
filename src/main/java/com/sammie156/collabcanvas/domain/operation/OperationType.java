@@ -10,5 +10,7 @@ public enum OperationType {
     ADD_EDGE,
     REMOVE_EDGE,
 
-    UPDATE_NODE_CONTENT
+    UPDATE_NODE_CONTENT,
+
+    UNKNOWN_OPERATION
 }

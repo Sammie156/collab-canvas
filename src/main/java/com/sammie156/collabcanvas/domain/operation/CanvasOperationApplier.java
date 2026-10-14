@@ -131,7 +131,7 @@ public class CanvasOperationApplier {
         ) {
             groupNode.updateGroup(group.label(), group.background(), group.backgroundStyle());
         } else {
-            throw new IllegalArgumentException(
+            throw new UnsupportedOperationException(
                 "Content type does not match Node type: " + node.getClass().getSimpleName()
             );
         }
