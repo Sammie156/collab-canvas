@@ -85,7 +85,7 @@ public class CanvasOperationApplier {
         node.changeColor(payload.getColor());
     }
 
-    private Node findNode(Canvas canvas, UUID targetId) {
+    private Node findNode(Canvas canvas, String targetId) {
         return canvas.getNodes()
                 .stream()
                 .filter(node -> node.getId().equals(targetId))
@@ -95,7 +95,7 @@ public class CanvasOperationApplier {
                                 "Node not found: " + targetId));
     }
 
-    private Edge findEdge(Canvas canvas, UUID targetId) {
+    private Edge findEdge(Canvas canvas, String targetId) {
         return canvas.getEdges()
                 .stream()
                 .filter(edge -> edge.getId().equals(targetId))

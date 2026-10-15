@@ -1,22 +1,20 @@
 package com.sammie156.collabcanvas.domain.operation;
 
-import java.util.UUID;
-
 public class Operation {
-    private final UUID id;
-    private final UUID canvasId;
-    private final UUID userId;
+    private final String id;
+    private final String canvasId;
+    private final String userId;
     private final OperationType type;
-    private final UUID targetId;
+    private final String targetId;
     private final OperationPayload payload;
     private final long serverRevision;
 
     public Operation(
-            UUID id,
-            UUID canvasId,
-            UUID userId,
+            String id,
+            String canvasId,
+            String userId,
             OperationType type,
-            UUID targetId,
+            String targetId,
             OperationPayload payload,
             long serverRevision) {
 
@@ -42,11 +40,11 @@ public class Operation {
     }
 
     private void validate(
-            UUID id,
-            UUID canvasId,
-            UUID userId,
+            String id,
+            String canvasId,
+            String userId,
             OperationType type,
-            UUID targetId,
+            String targetId,
             OperationPayload payload,
             long serverRevision) {
         if (id == null || canvasId == null || userId == null || type == null) {
@@ -91,15 +89,15 @@ public class Operation {
         }
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public UUID getCanvasId() {
+    public String getCanvasId() {
         return canvasId;
     }
 
-    public UUID getUserId() {
+    public String getUserId() {
         return userId;
     }
 
@@ -107,7 +105,7 @@ public class Operation {
         return type;
     }
 
-    public UUID getTargetId() {
+    public String getTargetId() {
         return targetId;
     }
 

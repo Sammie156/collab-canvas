@@ -1,15 +1,13 @@
 package com.sammie156.collabcanvas.domain.canvas;
 
-import java.util.UUID;
-
 public abstract class Node {
-    private final UUID id;
+    private final String id;
     private Position position;
     private Size size;
     private CanvasColor nodeColor;
 
     protected Node(
-        UUID id,
+        String id,
         Position position,
         Size size,
         CanvasColor canvasColor
@@ -20,7 +18,7 @@ public abstract class Node {
         this.nodeColor = canvasColor;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 

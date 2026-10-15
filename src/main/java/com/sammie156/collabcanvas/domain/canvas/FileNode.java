@@ -1,13 +1,11 @@
 package com.sammie156.collabcanvas.domain.canvas;
 
-import java.util.UUID;
-
 public class FileNode extends Node{
     private String file;
     private String subpath;
 
     public FileNode(
-        UUID uuid,
+        String uuid,
         Position position,
         Size size,
         CanvasColor color,
