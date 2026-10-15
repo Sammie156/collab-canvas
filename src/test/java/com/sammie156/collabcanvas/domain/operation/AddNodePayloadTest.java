@@ -15,7 +15,7 @@ import com.sammie156.collabcanvas.domain.canvas.Node;
 public class AddNodePayloadTest {
     @Test
     void shouldStoreNode() {
-        UUID id = UUID.randomUUID();
+        String id = UUID.randomUUID().toString();
 
         Node node = new TextNode(
             id,

@@ -10,9 +10,9 @@ public class EdgeTest {
 
     @Test
     void shouldConnectTwoNodes() {
-        UUID fromNode = UUID.randomUUID();
-        UUID toNode = UUID.randomUUID();
-        UUID edgeId = UUID.randomUUID();
+        String fromNode = UUID.randomUUID().toString();
+        String toNode = UUID.randomUUID().toString();
+        String edgeId = UUID.randomUUID().toString();
 
         Edge edge = new Edge(
                 edgeId,
@@ -33,11 +33,11 @@ public class EdgeTest {
     @Test
     void shouldStoreConnectionDetails() {
         Edge edge = new Edge(
-                UUID.randomUUID(),
-                UUID.randomUUID(),
+                UUID.randomUUID().toString(),
+                UUID.randomUUID().toString(),
                 EdgeSide.RIGHT,
                 EdgeEnd.NONE,
-                UUID.randomUUID(),
+                UUID.randomUUID().toString(),
                 EdgeSide.BOTTOM,
                 EdgeEnd.ARROW,
                 new CanvasColor("3"),
@@ -52,11 +52,11 @@ public class EdgeTest {
     @Test
     void shouldStoreColorAndLabel() {
         Edge edge = new Edge(
-                UUID.randomUUID(),
-                UUID.randomUUID(),
+                UUID.randomUUID().toString(),
+                UUID.randomUUID().toString(),
                 null,
                 null,
-                UUID.randomUUID(),
+                UUID.randomUUID().toString(),
                 null,
                 null,
                 new CanvasColor("3"),

@@ -1,12 +1,10 @@
 package com.sammie156.collabcanvas.domain.canvas;
 
-import java.util.UUID;
-
 public class LinkNode extends Node {
     private String url;
 
     public LinkNode(
-            UUID uuid,
+            String uuid,
             Position position,
             Size size,
             CanvasColor color,

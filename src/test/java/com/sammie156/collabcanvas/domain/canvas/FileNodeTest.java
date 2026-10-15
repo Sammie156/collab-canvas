@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class FileNodeTest {
     FileNode createFileNode() {
         return new FileNode(
-            UUID.randomUUID(),
+            UUID.randomUUID().toString(),
             new Position(100, 200),
             new Size(10, 15),
             new CanvasColor("4"),
@@ -20,7 +20,7 @@ public class FileNodeTest {
 
     @Test
     void shouldCreateFileNode() {
-        UUID uuid = UUID.randomUUID();
+        String uuid = UUID.randomUUID().toString();
 
         Position position = new Position(100, 200);
         Size size = new Size(10, 15);
