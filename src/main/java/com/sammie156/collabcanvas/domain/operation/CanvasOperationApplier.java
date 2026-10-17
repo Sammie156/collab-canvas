@@ -1,7 +1,5 @@
 package com.sammie156.collabcanvas.domain.operation;
 
-import java.util.UUID;
-
 import com.sammie156.collabcanvas.domain.canvas.Canvas;
 import com.sammie156.collabcanvas.domain.canvas.Edge;
 import com.sammie156.collabcanvas.domain.canvas.FileNode;

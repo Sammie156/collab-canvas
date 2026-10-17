@@ -672,9 +672,4 @@ public class CanvasOperationApplierTest {
             () -> new CanvasOperationApplier().apply(canvas, operation)
         );
     }
-
-    // TODO: Add tests for various combinations of Operations:
-    // shouldRejectNullCanvas
-    // shouldRejectNullUserId,
-    // shouldRejectMoveNodeWithWrongPayload
 }
