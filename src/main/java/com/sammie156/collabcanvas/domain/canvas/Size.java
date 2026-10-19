@@ -2,10 +2,21 @@ package com.sammie156.collabcanvas.domain.canvas;
 
 import java.util.Objects;
 
+// TODO: What if I could combine Position and Size into one class?
+// Like x and y means both position and the x and y size.
+
+/**
+ * Stores the size of a node in terms of width and height
+ */
 public class Size {
     private int width;
     private int height;
 
+    /**
+     * Creates an object of Size class
+     * @param width
+     * @param height
+     */
     public Size(int width, int height) {
         if (width < 0 || height < 0) {
             throw new IllegalArgumentException(
