@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class GroupNodeTest {
     GroupNode createGroupNode() {
         return new GroupNode(
-            UUID.randomUUID(),
+            UUID.randomUUID().toString(),
             new Position(300, 200),
             new Size(10, 15),
             new CanvasColor("3"),
@@ -20,7 +20,7 @@ public class GroupNodeTest {
 
     @Test 
     void shouldCreateGroupNode() {
-        UUID id = UUID.randomUUID();
+        String id = UUID.randomUUID().toString();
 
         Position position = new Position(100, 200);
         Size size = new Size(10, 15);

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class CanvasTest {
     @Test
     void shouldCreateEmptyCanvas() {
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
         assertTrue(canvas.getNodes().isEmpty());
         assertTrue(canvas.getEdges().isEmpty());
@@ -19,8 +19,7 @@ public class CanvasTest {
 
     @Test
     void shouldStoreCanvasDetails() {
-        UUID uuid = UUID.randomUUID();
-
+        String uuid = UUID.randomUUID().toString();
         Canvas canvas = new Canvas(uuid, "canvas");
 
         assertEquals(uuid, canvas.getId());
@@ -29,7 +28,7 @@ public class CanvasTest {
 
     @Test
     void shouldNotAllowModificationOfLists() {
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
         assertThrows(UnsupportedOperationException.class, () -> canvas.getNodes().add(null));
         assertThrows(UnsupportedOperationException.class, () -> canvas.getEdges().add(null));
@@ -37,14 +36,14 @@ public class CanvasTest {
 
     @Test
     void shouldAddNode() {
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
-        Node node = new TextNode(UUID.randomUUID(),
+        Node node = new TextNode(UUID.randomUUID().toString(),
                 new Position(200, 300),
                 new Size(10, 12),
                 new CanvasColor("3"),
                 "Hello Node");
-        
+
         canvas.addNode(node);
 
         assertEquals(1, canvas.getNodes().size());
@@ -53,68 +52,62 @@ public class CanvasTest {
 
     @Test
     void shouldRejectDuplicateNodes() {
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
-        UUID nodeId = UUID.randomUUID();
+        String nodeId = UUID.randomUUID().toString();
 
         Node firstNode = new TextNode(
-            nodeId,
-            new Position(100, 200),
-            new Size(10, 12),
-            new CanvasColor("3"),
-            "Hello Node"
-        );
-        
+                nodeId,
+                new Position(100, 200),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "Hello Node");
+
         Node secondNode = new TextNode(
-            nodeId,
-            new Position(100, 200),
-            new Size(10, 12),
-            new CanvasColor("3"),
-            "Hello Node"
-        );
+                nodeId,
+                new Position(100, 200),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "Hello Node");
 
         canvas.addNode(firstNode);
 
         assertThrows(
-            IllegalArgumentException.class,
-            () -> canvas.addNode(secondNode)
-        );
+                IllegalArgumentException.class,
+                () -> canvas.addNode(secondNode));
     }
 
     @Test
     void shouldAddEdge() {
         Node fromNode = new TextNode(
-            UUID.randomUUID(), 
-            new Position(100, 300), 
-            new Size(10, 12), 
-            new CanvasColor("3"),
-            "Hello Node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(100, 300),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "Hello Node");
 
         Node toNode = new TextNode(
-            UUID.randomUUID(), 
-            new Position(12, 13), 
-            new Size(10, 43), 
-            new CanvasColor("5"),
-            "Another Node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(12, 13),
+                new Size(10, 43),
+                new CanvasColor("5"),
+                "Another Node");
 
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
         canvas.addNode(fromNode);
         canvas.addNode(toNode);
 
         Edge edge = new Edge(
-            UUID.randomUUID(),
-            fromNode.getId(),
-            null,
-            null,
-            toNode.getId(),
-            null,
-            null,
-            new CanvasColor("3"),
-            "edge"
-        );
+                UUID.randomUUID().toString(),
+                fromNode.getId(),
+                null,
+                null,
+                toNode.getId(),
+                null,
+                null,
+                new CanvasColor("3"),
+                "edge");
 
         canvas.addEdge(edge);
 
@@ -125,36 +118,33 @@ public class CanvasTest {
     @Test
     void shouldRejectInvalidToNode() {
         Node fromNode = new TextNode(
-            UUID.randomUUID(), 
-            new Position(100, 300), 
-            new Size(10, 12), 
-            new CanvasColor("3"),
-            "Hello Node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(100, 300),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "Hello Node");
 
         Node toNode = new TextNode(
-            UUID.randomUUID(), 
-            new Position(100, 300), 
-            new Size(10, 12), 
-            new CanvasColor("3"),
-            "Hello Node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(100, 300),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "Hello Node");
 
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
         canvas.addNode(fromNode);
 
         Edge edge = new Edge(
-            UUID.randomUUID(),
-            fromNode.getId(),
-            null,
-            null,
-            toNode.getId(),
-            null,
-            null,
-            new CanvasColor("3"),
-            "edge"
-        );
+                UUID.randomUUID().toString(),
+                fromNode.getId(),
+                null,
+                null,
+                toNode.getId(),
+                null,
+                null,
+                new CanvasColor("3"),
+                "edge");
 
         assertThrows(IllegalArgumentException.class, () -> canvas.addEdge(edge));
     }
@@ -162,36 +152,33 @@ public class CanvasTest {
     @Test
     void shouldRejectInvalidFromNode() {
         Node fromNode = new TextNode(
-            UUID.randomUUID(), 
-            new Position(100, 300), 
-            new Size(10, 12), 
-            new CanvasColor("3"),
-            "Hello Node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(100, 300),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "Hello Node");
 
         Node toNode = new TextNode(
-            UUID.randomUUID(), 
-            new Position(100, 300), 
-            new Size(10, 12), 
-            new CanvasColor("3"),
-            "Hello Node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(100, 300),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "Hello Node");
 
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
         canvas.addNode(toNode);
 
         Edge edge = new Edge(
-            UUID.randomUUID(),
-            fromNode.getId(),
-            null,
-            null,
-            toNode.getId(),
-            null,
-            null,
-            new CanvasColor("3"),
-            "edge"
-        );
+                UUID.randomUUID().toString(),
+                fromNode.getId(),
+                null,
+                null,
+                toNode.getId(),
+                null,
+                null,
+                new CanvasColor("3"),
+                "edge");
 
         assertThrows(IllegalArgumentException.class, () -> canvas.addEdge(edge));
     }
@@ -199,68 +186,63 @@ public class CanvasTest {
     @Test
     void shouldRejectDuplicateNode() {
         Node fromNode = new TextNode(
-            UUID.randomUUID(), 
-            new Position(100, 300), 
-            new Size(10, 12), 
-            new CanvasColor("3"),
-            "Hello Node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(100, 300),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "Hello Node");
 
         Node toNode = new TextNode(
-            UUID.randomUUID(), 
-            new Position(12, 13), 
-            new Size(10, 43), 
-            new CanvasColor("5"),
-            "Another Node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(12, 13),
+                new Size(10, 43),
+                new CanvasColor("5"),
+                "Another Node");
 
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
         canvas.addNode(fromNode);
         canvas.addNode(toNode);
 
-        UUID edgeId = UUID.randomUUID();
+        String edgeId = UUID.randomUUID().toString();
 
         Edge firstEdge = new Edge(
-            edgeId,
-            fromNode.getId(),
-            null,
-            null,
-            toNode.getId(),
-            null,
-            null,
-            new CanvasColor("3"),
-            "edge"
-        );
+                edgeId,
+                fromNode.getId(),
+                null,
+                null,
+                toNode.getId(),
+                null,
+                null,
+                new CanvasColor("3"),
+                "edge");
 
         Edge secondEdge = new Edge(
-            edgeId,
-            fromNode.getId(),
-            null,
-            null,
-            toNode.getId(),
-            null,
-            null,
-            new CanvasColor("3"),
-            "edge"
-        );
+                edgeId,
+                fromNode.getId(),
+                null,
+                null,
+                toNode.getId(),
+                null,
+                null,
+                new CanvasColor("3"),
+                "edge");
 
         canvas.addEdge(firstEdge);
-        
+
         assertThrows(IllegalArgumentException.class, () -> canvas.addEdge(secondEdge));
     }
 
     @Test
     void shouldRemoveNode() {
         Node node = new TextNode(
-            UUID.randomUUID(),
-            new Position(100, 200),
-            new Size(10, 12),
-            new CanvasColor("3"),
-            "node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(100, 200),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "node");
 
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
         canvas.addNode(node);
         canvas.removeNode(node);
@@ -271,14 +253,13 @@ public class CanvasTest {
     @Test
     void shouldRejectRemovingInvalidNode() {
         Node node = new TextNode(
-            UUID.randomUUID(),
-            new Position(100, 200),
-            new Size(10, 12),
-            new CanvasColor("3"),
-            "node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(100, 200),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "node");
 
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
         assertThrows(IllegalArgumentException.class, () -> canvas.removeNode(node));
     }
@@ -286,39 +267,36 @@ public class CanvasTest {
     @Test
     void shouldRemoveEdgeWhenDeletingNode() {
         Node fromNode = new TextNode(
-            UUID.randomUUID(), 
-            new Position(100, 300), 
-            new Size(10, 12), 
-            new CanvasColor("3"),
-            "Hello Node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(100, 300),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "Hello Node");
 
         Node toNode = new TextNode(
-            UUID.randomUUID(), 
-            new Position(12, 13), 
-            new Size(10, 43), 
-            new CanvasColor("5"),
-            "Another Node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(12, 13),
+                new Size(10, 43),
+                new CanvasColor("5"),
+                "Another Node");
 
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
         canvas.addNode(fromNode);
         canvas.addNode(toNode);
 
-        UUID edgeId = UUID.randomUUID();
+        String edgeId = UUID.randomUUID().toString();
 
         Edge edge = new Edge(
-            edgeId,
-            fromNode.getId(),
-            null,
-            null,
-            toNode.getId(),
-            null,
-            null,
-            new CanvasColor("3"),
-            "edge"
-        );
+                edgeId,
+                fromNode.getId(),
+                null,
+                null,
+                toNode.getId(),
+                null,
+                null,
+                new CanvasColor("3"),
+                "edge");
 
         canvas.addEdge(edge);
         canvas.removeNode(fromNode);
@@ -329,54 +307,49 @@ public class CanvasTest {
     @Test
     void shouldRemoveEdgesOnBothSideWhenRemoveNode() {
         Node nodeA = new TextNode(
-            UUID.randomUUID(),
-            new Position(100, 200),
-            new Size(10, 12),
-            new CanvasColor("3"),
-            "first node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(100, 200),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "first node");
 
         Node nodeB = new TextNode(
-            UUID.randomUUID(),
-            new Position(105, 300),
-            new Size(23, 30),
-            new CanvasColor("4"),
-            "second node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(105, 300),
+                new Size(23, 30),
+                new CanvasColor("4"),
+                "second node");
 
         Node nodeC = new TextNode(
-            UUID.randomUUID(),
-            new Position(200, 321),
-            new Size(28, 31),
-            new CanvasColor("6"),
-            "third node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(200, 321),
+                new Size(28, 31),
+                new CanvasColor("6"),
+                "third node");
 
         Edge firstEdge = new Edge(
-            UUID.randomUUID(),
-            nodeA.getId(),
-            null,
-            null,
-            nodeB.getId(),
-            null,
-            null,
-            new CanvasColor("1"),
-            "edge1"
-        );
+                UUID.randomUUID().toString(),
+                nodeA.getId(),
+                null,
+                null,
+                nodeB.getId(),
+                null,
+                null,
+                new CanvasColor("1"),
+                "edge1");
 
         Edge secondEdge = new Edge(
-            UUID.randomUUID(),
-            nodeB.getId(),
-            null,
-            null,
-            nodeC.getId(),
-            null,
-            null,
-            new CanvasColor("2"),
-            "edge2"
-        );
+                UUID.randomUUID().toString(),
+                nodeB.getId(),
+                null,
+                null,
+                nodeC.getId(),
+                null,
+                null,
+                new CanvasColor("2"),
+                "edge2");
 
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
         canvas.addNode(nodeA);
         canvas.addNode(nodeB);
@@ -396,34 +369,31 @@ public class CanvasTest {
     @Test
     void shouldRemoveEdge() {
         Node nodeA = new TextNode(
-            UUID.randomUUID(),
-            new Position(100, 200),
-            new Size(10, 12),
-            new CanvasColor("3"),
-            "first node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(100, 200),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "first node");
 
         Node nodeB = new TextNode(
-            UUID.randomUUID(),
-            new Position(105, 300),
-            new Size(23, 30),
-            new CanvasColor("4"),
-            "second node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(105, 300),
+                new Size(23, 30),
+                new CanvasColor("4"),
+                "second node");
 
         Edge edge = new Edge(
-            UUID.randomUUID(),
-            nodeA.getId(),
-            null,
-            null,
-            nodeB.getId(),
-            null,
-            null,
-            new CanvasColor("1"),
-            "edge1"
-        );
+                UUID.randomUUID().toString(),
+                nodeA.getId(),
+                null,
+                null,
+                nodeB.getId(),
+                null,
+                null,
+                new CanvasColor("1"),
+                "edge1");
 
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
         canvas.addNode(nodeA);
         canvas.addNode(nodeB);
@@ -437,38 +407,34 @@ public class CanvasTest {
     @Test
     void shouldRejectRemovingInvalidEdge() {
         Node nodeA = new TextNode(
-            UUID.randomUUID(),
-            new Position(100, 200),
-            new Size(10, 12),
-            new CanvasColor("3"),
-            "first node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(100, 200),
+                new Size(10, 12),
+                new CanvasColor("3"),
+                "first node");
 
         Node nodeB = new TextNode(
-            UUID.randomUUID(),
-            new Position(105, 300),
-            new Size(23, 30),
-            new CanvasColor("4"),
-            "second node"
-        );
+                UUID.randomUUID().toString(),
+                new Position(105, 300),
+                new Size(23, 30),
+                new CanvasColor("4"),
+                "second node");
 
         Edge edge = new Edge(
-            UUID.randomUUID(),
-            nodeA.getId(),
-            null,
-            null,
-            nodeB.getId(),
-            null,
-            null,
-            new CanvasColor("1"),
-            "edge1"
-        );
+                UUID.randomUUID().toString(),
+                nodeA.getId(),
+                null,
+                null,
+                nodeB.getId(),
+                null,
+                null,
+                new CanvasColor("1"),
+                "edge1");
 
-        Canvas canvas = new Canvas(UUID.randomUUID(), "canvas");
+        Canvas canvas = new Canvas(UUID.randomUUID().toString(), "canvas");
 
         assertThrows(
-            IllegalArgumentException.class,
-            () -> canvas.removeEdge(edge)
-        );
+                IllegalArgumentException.class,
+                () -> canvas.removeEdge(edge));
     }
 }

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class TextNodeTest {
     private TextNode createTextNode() {
         return new TextNode(
-            UUID.randomUUID(),
+            UUID.randomUUID().toString(),
             new Position(100, 200),
             new Size(10, 25),
             new CanvasColor("4"),
@@ -19,7 +19,7 @@ public class TextNodeTest {
 
     @Test
     void shouldCreateTextNode() {
-        UUID id = UUID.randomUUID();
+        String id = UUID.randomUUID().toString();
 
         Position position = new Position(100, 200);
         Size size = new Size(10, 25);

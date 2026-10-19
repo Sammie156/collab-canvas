@@ -2,16 +2,15 @@ package com.sammie156.collabcanvas.domain.canvas;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class Canvas {
-    private final UUID id;
+    private final String id;
     private String name;
 
     private final List<Node> nodes;
     private final List<Edge> edges;
 
-    public Canvas(UUID id, String name) {
+    public Canvas(String id, String name) {
         this.id = id;
         this.name = name;
 
@@ -19,7 +18,7 @@ public class Canvas {
         this.edges = new ArrayList<>();
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 

@@ -13,11 +13,11 @@ public class AddEdgePayloadTest {
     @Test
     void shouldStoreEdge() {
         Edge edge = new Edge(
-            UUID.randomUUID(),
-            UUID.randomUUID(),
+            UUID.randomUUID().toString(),
+            UUID.randomUUID().toString(),
             null,
             null,
-            UUID.randomUUID(),
+            UUID.randomUUID().toString(),
             null,
             null,
             new CanvasColor("3"),

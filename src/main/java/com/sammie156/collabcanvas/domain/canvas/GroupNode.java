@@ -1,14 +1,12 @@
 package com.sammie156.collabcanvas.domain.canvas;
 
-import java.util.UUID;
-
 public class GroupNode extends Node {
     private String label;
     private String background;
     private String backgroundStyle;
 
     public GroupNode(
-            UUID uuid,
+            String uuid,
             Position position,
             Size size,
             CanvasColor color,
